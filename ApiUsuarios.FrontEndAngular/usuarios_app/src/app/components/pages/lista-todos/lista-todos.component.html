@@ -1,0 +1,47 @@
+<div class="text-center">
+  <img class="mb-2" src="https://www.freeiconspng.com/uploads/user-login-icon-29.png" width="30" >
+  <h4>Consulta de usuários</h4>
+  <p>Listagem de usuários cadastrados.</p>
+</div>
+<hr/>
+
+<div class="table-responsive">
+  <table class="table table-sm table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>DataNascimento</th>
+        <th>Operações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let post of usuarios | paginate : { itemsPerPage: tableSize, currentPage: page, totalItems: count }; 
+          let i = index">
+        <th scope="row">{{  post.nome }}</th>
+        <td>{{ post.sobreNome }}</td>
+        <td>{{ post.email }}</td>
+        <td>{{ post.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" (click)="onClickAtualizar(post.idUsuario)">
+            Atualizar
+          </button>
+           &nbsp;
+          <button type="button"  class="btn btn-danger" (click)="onDelete(post.idUsuario)">
+              Excluir
+          </button>
+      </td>
+  </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+</div>

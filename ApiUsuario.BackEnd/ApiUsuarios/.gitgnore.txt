@@ -1,0 +1,42 @@
+# Arquivos de compilação
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.exe.config
+# Arquivos temporários de compilação
+*.msi
+*.zip
+*.rar
+# Pacotes NuGet
+*.nuget/
+*.nupkg
+packages/
+# Arquivos de usuário do Visual Studio
+*.user
+*.suo
+*.sln.docstates
+# Cache de compilação
+bin/
+obj/
+# Logs e arquivos de depuração
+*.log
+*.vspscc
+*.vssscc
+*.scc
+# Arquivos gerados pelo Visual Studio
+_ReSharper*/
+*.resharper
+[Tt]humbs.db
+[Tt]est[Rr]esult*
+# Diretório de publicação
+publish/
+# Chaves e certificados
+*.snk
+*.pfx
+# Arquivos de configuração de ambiente
+*.env
+# Arquivos de cache do Node.js
+node_modules/
+# Arquivos de dependências do Yarn
+yarn.lock

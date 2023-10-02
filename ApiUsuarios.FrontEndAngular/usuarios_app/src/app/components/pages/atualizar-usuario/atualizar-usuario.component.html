@@ -1,0 +1,95 @@
+<div class="text-center">
+    <img class="mb-2" src="https://www.freeiconspng.com/uploads/user-login-icon-29.png" width="60" >
+    <h5>Atualização do usuário</h5>
+    <p>Preencha os campos informado para a criação.</p>
+</div>
+<hr/>
+
+<div class="text-success mb-2 text-center">
+    <strong>{{mensagem_sucesso}}</strong>
+    </div>
+    <div class="text-danger mb-2 text-center">
+    <strong>{{mensagem_erro}}</strong>
+</div>
+
+<form [formGroup]="formAtualizarUsuario" (ngSubmit)="onSubmit()">
+    <div class="mb-2">
+        <label>Nome</label>
+        <input type="text" class="form-control" formControlName="nome"/>
+        <div *ngIf="form.nome.touched && form.nome.invalid" class="text-danger">
+            <span *ngIf="form.nome.errors.required">
+                Por favor, informe o nome do usuário.
+            </span>
+            <span *ngIf="form.nome.errors.maxLength">
+            Por favor, informe no máximo 20 caracteres.
+            </span>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label>Sobrenome</label>
+        <input type="text" class="form-control" formControlName="sobrenome"/>
+        <div *ngIf="form.sobrenome.touched && form.sobrenome.invalid" class="text-danger">
+            <span *ngIf="form.sobrenome.errors.required">
+                Por favor, informe o sobrenome do usuário.
+            </span>
+            <span *ngIf="form.sobrenome.errors.maxLength">
+            Por favor, informe no máximo 100 caracteres.
+            </span>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label>Email</label>
+        <input type="text" class="form-control" formControlName="email"/>
+        <div *ngIf="form.email.touched && form.email.invalid" class="text-danger">
+            <span *ngIf="form.email.errors.required">
+                Por favor, informe o email do usuário.
+            </span>
+            <span *ngIf="form.email.errors.email">
+                Por favor, informe um endereço de email válido.
+            </span>
+            <span *ngIf="form.email.errors.maxLength">
+                Por favor, informe no máximo 50 caracteres.
+            </span>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label>Data de Nascimento</label>
+        <input type="date" class="form-control" formControlName="dataNascimento"/>
+        <div *ngIf="form.dataNascimento.touched && form.dataNascimento.invalid" class="text-danger">
+            <span *ngIf="form.dataNascimento.errors.required">
+                Por favor, informe a data nascimento do usuário.
+            </span>
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="idEscolaridade" class="col-sm-2 col-form-
+        label">Escolaridade</label> 
+           <select class="form-select" 
+                   formControlName="idEscolaridade">
+               <option value="">
+                   Escolha uma opção
+               </option>
+               <option *ngFor="let e of escolaridades" 
+                        value="{{e.idEscolaridade}}">
+                   {{e.escolaridade}}
+               </option>
+           </select>
+           <span class="text-danger">
+               <span *ngIf="form.idEscolaridade.touched && 
+                      form.idCategoria.invalid">
+                   <span 
+                   *ngIf="form.idEscolaridade.errors.required">
+                       Por favor, informe 
+                       a escolaridade do usuário.
+                   </span>
+               </span>
+           </span>
+       
+    </div>
+    <div class="mb-2 d-grid">
+        <button type="submit" class="btn btn-success"
+        [disabled]="!formAtualizarUsuario.valid">
+        Atualizar Cadastro
+        </button>
+    </div>
+</form>

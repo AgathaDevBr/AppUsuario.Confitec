@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiUsuarios.Services</name>
+    </assembly>
+    <members>
+        <member name="M:ApiUsuarios.Services.Controllers.UsuarioController.AdicionarUsuario(ApiUsuarios.Services.Models.Request.UsuarioCreateRequest)">
+            <summary>
+            Serviço para cadastro de usuários.
+            </summary>
+        </member>
+        <member name="M:ApiUsuarios.Services.Controllers.UsuarioController.AtualizarUsuario(ApiUsuarios.Services.Models.Request.UsuarioUpdateRequest)">
+            <summary>
+            Serviço para atualização de usuários.
+            </summary>
+        </member>
+        <member name="M:ApiUsuarios.Services.Controllers.UsuarioController.DeletarUsuario(System.Int32)">
+            <summary>
+            Serviço para excluir usuários.
+            </summary>
+        </member>
+        <member name="M:ApiUsuarios.Services.Controllers.UsuarioController.ListaTodosUsuarios">
+            <summary>
+            Serviço para listar todos usuários.
+            </summary>
+        </member>
+        <member name="M:ApiUsuarios.Services.Controllers.UsuarioController.ListaEscolaridades">
+            <summary>
+            Serviço para listar todas escolaridades.
+            </summary>
+        </member>
+        <member name="M:ApiUsuarios.Services.Controllers.UsuarioController.ListaUsuario(System.Int32)">
+            <summary>
+            Serviço para listar apenas um usuário por id.
+            </summary>
+        </member>
+    </members>
+</doc>
