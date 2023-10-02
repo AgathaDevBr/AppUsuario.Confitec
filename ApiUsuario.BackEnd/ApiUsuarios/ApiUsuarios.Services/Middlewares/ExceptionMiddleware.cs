@@ -1,5 +1,7 @@
 ﻿using ApiUsuarios.Services.Middlewares.Exceptions;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Newtonsoft.Json;
+using Salesforce.Common.Models.Json;
 using System.Net;
 
 namespace ApiUsuarios.Services.Middlewares
@@ -26,7 +28,7 @@ namespace ApiUsuarios.Services.Middlewares
             {
                 await HandleException(context, e);
             }
-            catch(IdadeException e)
+            catch (IdadeException e)
             {
                 await HandleException(context, e);
             }
@@ -38,8 +40,8 @@ namespace ApiUsuarios.Services.Middlewares
 
         private async Task HandleException(HttpContext context, Exception e)
         {
-           switch (e)
-           {
+            switch (e)
+            {
                 case EmailJaCadastradoException:
                     //HTTP 400 BAD REQUEST
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -55,6 +57,27 @@ namespace ApiUsuarios.Services.Middlewares
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
                     break;
             }
+            //retornando o conteúdo do erro..
+            context.Response.ContentType = "application/json";
+
+            var result = new ErrorResult
+            {
+                StatusCode = context.Response.StatusCode,
+                Message = e.Message,
+            };
+
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(result));
         }
+
+        /// <summary>
+        /// Modelo de dados para retornar o conteudo dos erros
+        /// </summary>
+        public class ErrorResult
+        {
+            public int StatusCode { get; set; }
+            public string? Message { get; set; }
+        }
+
+
     }
 }

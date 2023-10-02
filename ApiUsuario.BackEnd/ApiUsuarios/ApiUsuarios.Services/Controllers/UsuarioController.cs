@@ -8,6 +8,7 @@ using AutoMapper;
 using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Salesforce.Common.Models.Json;
 using System.Globalization;
 
 namespace ApiUsuarios.Services.Controllers
@@ -34,6 +35,7 @@ namespace ApiUsuarios.Services.Controllers
         [HttpPost]
         [Route("adicionar-usuario")]
         [ProducesResponseType(typeof(UsuarioResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ErrorResult), 400)]
         public IActionResult AdicionarUsuario(UsuarioCreateRequest request)
         {
             TimeSpan diferenca = DateTime.Now - request.DataNascimento.Value;
@@ -86,6 +88,7 @@ namespace ApiUsuarios.Services.Controllers
         [HttpPut]
         [Route("atualizar-usuario")]
         [ProducesResponseType(typeof(UsuarioResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResult), 404)]
         public IActionResult AtualizarUsuario(UsuarioUpdateRequest request)
         {
             var usuario = _usuarioRepository?.GetById(request.IdUsuario);

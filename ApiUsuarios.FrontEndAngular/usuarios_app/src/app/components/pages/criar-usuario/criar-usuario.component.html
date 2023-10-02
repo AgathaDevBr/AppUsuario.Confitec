@@ -25,6 +25,9 @@
             <span *ngIf="form.nome.errors.maxLength">
             Por favor, informe no máximo 20 caracteres.
             </span>
+            <span *ngIf="form.nome.errors.minlength">
+                Por favor, informe no mínimo 5 caracteres.
+            </span>
         </div>
     </div>
     <div class="mb-2">
@@ -36,6 +39,9 @@
             </span>
             <span *ngIf="form.nome.errors.maxLength">
             Por favor, informe no máximo 100 caracteres.
+            </span>
+            <span *ngIf="form.sobrenome.errors.minlength">
+                Por favor, informe no mínimo 5 caracteres.
             </span>
         </div>
     </div>

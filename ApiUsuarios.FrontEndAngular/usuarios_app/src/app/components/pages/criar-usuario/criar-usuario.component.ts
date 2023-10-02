@@ -40,11 +40,11 @@ export class CriarUsuarioComponent {
   formCriarUsuario = new FormGroup({
 
         nome: new FormControl('', [
-            Validators.required, Validators.maxLength(20)
+            Validators.required, Validators.maxLength(20), Validators.minLength(5)
         ]),
 
         sobrenome: new FormControl('',[
-          Validators.required, Validators.maxLength(100)
+          Validators.required, Validators.maxLength(100), Validators.minLength(5)
         ]),
 
         email: new FormControl('',[
@@ -72,6 +72,9 @@ export class CriarUsuarioComponent {
 
       this.spinner.show();
 
+      this.mensagem_sucesso = '';
+      this.mensagem_erro = [];
+
       //fazendo uma requisição POST para a API
       this.httpClient.post(
         environment.apiUsuarios + '/adicionar-usuario' ,
@@ -81,14 +84,13 @@ export class CriarUsuarioComponent {
         this.mensagem_sucesso = data.mensagem;
         this.formCriarUsuario.reset(); //limpando o formulário
         },
-      error: (e) => { //capturando a resposta de erro
-        this.mensagem_erro = e.error;
-      }
+        error: (e) => { //capturando a resposta de erro
+          this.mensagem_erro = e.error.Message;
+          console.log(e.error);
+        }
     })  
-    .add(
-      () => {
+    .add(() => {
         this.spinner.hide();
-      }
-    )
-  };
+    })
+  }
 }
