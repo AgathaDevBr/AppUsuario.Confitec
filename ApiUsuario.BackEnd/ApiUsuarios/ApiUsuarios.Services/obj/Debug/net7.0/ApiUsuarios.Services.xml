@@ -34,5 +34,10 @@
             Serviço para listar apenas um usuário por id.
             </summary>
         </member>
+        <member name="T:ApiUsuarios.Services.Middlewares.ExceptionMiddleware.ErrorResult">
+            <summary>
+            Modelo de dados para retornar o conteudo dos erros
+            </summary>
+        </member>
     </members>
 </doc>

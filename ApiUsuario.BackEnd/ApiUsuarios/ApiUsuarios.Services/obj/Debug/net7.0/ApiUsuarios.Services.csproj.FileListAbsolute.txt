@@ -229,3 +229,6 @@ C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\o
 C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\obj\Debug\net7.0\ApiUsuarios.Services.pdb
 C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\obj\Debug\net7.0\ApiUsuarios.Services.genruntimeconfig.cache
 C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\obj\Debug\net7.0\ref\ApiUsuarios.Services.dll
+C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\bin\Debug\net7.0\Salesforce.Common.dll
+C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\bin\Debug\net7.0\Salesforce.Force.dll
+C:\Dev\AppUsuario.Confitec\ApiUsuario.BackEnd\ApiUsuarios\ApiUsuarios.Services\bin\Debug\net7.0\Newtonsoft.Json.dll
