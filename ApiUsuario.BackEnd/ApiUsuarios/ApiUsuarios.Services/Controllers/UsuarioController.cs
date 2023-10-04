@@ -95,6 +95,9 @@ namespace ApiUsuarios.Services.Controllers
 
             if(usuario != null)
             {
+                if (_usuarioRepository.GetByEmail(request.Email) != null)
+                    throw new EmailJaCadastradoException();
+
                 TimeSpan diferenca = DateTime.Now - request.DataNascimento;
                 int idade = (int)diferenca.TotalDays / 365;
 

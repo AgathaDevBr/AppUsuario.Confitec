@@ -60,8 +60,9 @@ export class AtualizarUsuarioComponent {
           this.formAtualizarUsuario.controls['idEscolaridade'].setValue
                      (data.escolaridade.idEscolaridade);
         },
-        error: (e) => {
-          this.mensagem_erro = e.error.mensagem;
+        error: (e) => { //capturando a resposta de erro
+          this.mensagem_erro = e.error.Message;
+          console.log(e.error);
         }
       })
       .add(
@@ -74,23 +75,27 @@ export class AtualizarUsuarioComponent {
  //objeto para capturar o formulário
   formAtualizarUsuario = new FormGroup({
     nome: new FormControl('', [
-        Validators.required, Validators.maxLength(20)
+      Validators.required, Validators.maxLength(20), Validators.minLength(5)
     ]),
     sobrenome: new FormControl('',[
-      Validators.required, Validators.maxLength(100)
+      Validators.required, Validators.maxLength(100), Validators.minLength(5)
     ]),
+
     email: new FormControl('',[
       Validators.required, Validators.email, Validators.maxLength(50)
     ]),
+
     dataNascimento: new FormControl('',[
       Validators.required
     ]),
+
     idEscolaridade: new FormControl('',[
       Validators.required
     ]),
-    idUsuario: new FormControl('',[
-      Validators.required
-    ])
+
+      idUsuario: new FormControl('',[
+        Validators.required
+      ])
   });
 
   //objeto para executar as validações dos csmpos
@@ -102,6 +107,9 @@ export class AtualizarUsuarioComponent {
   onSubmit(): void {
     this.spinner.show();
 
+    this.mensagem_sucesso = '';
+    this.mensagem_erro = '';
+
     this.httpClient.put(
       environment.apiUsuarios + "/atualizar-usuario",
       this.formAtualizarUsuario.value,
@@ -111,8 +119,9 @@ export class AtualizarUsuarioComponent {
         next: (data: any) => {
           this.mensagem_sucesso = data.mensagem;
         },
-        error: (e) => {
-          this.mensagem_erro = e.error.mensagem;
+        error: (e) => { //capturando a resposta de erro
+          this.mensagem_erro = e.error.Message;
+          console.log(e.error);
         }
       })
       .add(
